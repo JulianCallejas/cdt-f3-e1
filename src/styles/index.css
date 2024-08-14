@@ -118,7 +118,7 @@
 }
 
 .placeholder {
-  color: #65657b;
+  color: rgba(213, 70, 200, 0.);
   font-family: sans-serif;
   left: 20px;
   line-height: 14px;
@@ -132,6 +132,7 @@
 .input:focus ~ .placeholder,
 .input:not(:placeholder-shown) ~ .placeholder {
   transform: translateY(-30px) translateX(10px) scale(0.75);
+  color: rgba(213, 70, 200, 0.9);
 }
 
 .input:not(:placeholder-shown) ~ .placeholder {
