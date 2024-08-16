@@ -39,3 +39,9 @@
     gap: 18px;
 
   }
+
+  .cardSpan {
+    text-transform: uppercase;
+    color: rgba(213, 70, 200, 0.9);
+    font-weight: 700; 
+  }

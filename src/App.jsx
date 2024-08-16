@@ -2,15 +2,21 @@ import { useState } from "react"
 import Card from "./components/Card"
 
 import appStyles from './styles/app.module.css'
+import Form from "./components/Form";
 
+const validation1 = /^[^\s].{2,}$/;
 
 function App() {
   
 
   const [data, setData] = useState({
-    email: "",
-    password: ""
+    fruta: "",
+    animal: "",
+    lugar: ""
   })
+
+  const [showCard, setshowCard] = useState(false);
+  const [validData, setValidData] = useState(true);
 
 
   const handleChange = (e) => {
@@ -20,32 +26,34 @@ function App() {
     })
   }
 
+  const clearData = () => {
+    setData({
+      fruta: "",
+      animal: "",
+      lugar: ""
+    })
+    setshowCard(false);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(data)
+    if (!validation1.test(data.fruta) || data.lugar.length < 6) {
+      setValidData(false);
+      setshowCard(false);
+    }
+    else{
+      setValidData(true);
+      setshowCard(true);
+    }
+    
   }
   
   return (
   <div className="App">
     <div className="App-container" >
-      <h1 className={appStyles.title} >Carga de estudiantes</h1>
-      <form onSubmit={handleSubmit}  className="form" >
-      <div className="input-container">
-        <input id="email" name="email" className="input" type="email" placeholder=" " value={data.email} onChange={handleChange} />
-        <div className="cut"></div>
-        <label htmlFor="email" className="placeholder">Email</label>
-      </div>
-      
-      <div className="input-container">
-        <input id="password" name="password" className="input" type="password" placeholder=" " value={data.password} onChange={handleChange} />
-        <div className="cut"></div>
-        <label htmlFor="email" className="placeholder">Password</label>
-      </div>
-      <div className="input-container">
-        <button className="btn fill" type="submit" >BUY NOW</button>
-      </div>
-      </form>
-      <Card prueba={"Hola, soy una tarjeta"} />
+      <h1 className={appStyles.title} >Historia loca</h1>
+      <Form data={data} handleChange={handleChange} handleSubmit={handleSubmit} validData={validData} />
+      { showCard && <Card data={data} clearData={clearData} /> }
     </div>
   </div>
 
