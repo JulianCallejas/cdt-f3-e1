@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
-
 import styles from '../styles/form.module.css'
 
-
 const Form = ({ data, handleChange, handleSubmit, validData }) => {
-
-
-
+    
     return (
         <form onSubmit={handleSubmit} className={styles.form} >
             

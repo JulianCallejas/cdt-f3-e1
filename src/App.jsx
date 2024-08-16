@@ -1,14 +1,12 @@
 import { useState } from "react"
 import Card from "./components/Card"
-
-import appStyles from './styles/app.module.css'
 import Form from "./components/Form";
+import appStyles from './styles/app.module.css'
 
-const validation1 = /^[^\s].{2,}$/;
+const inputValidation = /^[^\s].{2,}$/;
 
 function App() {
   
-
   const [data, setData] = useState({
     fruta: "",
     animal: "",
@@ -37,7 +35,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!validation1.test(data.fruta) || data.lugar.length < 6) {
+    if (!inputValidation.test(data.fruta) || data.lugar.length < 6) {
       setValidData(false);
       setshowCard(false);
     }
